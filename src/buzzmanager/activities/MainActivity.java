@@ -16,8 +16,6 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Beverage bev = new Beverage("test", 10.3f,5.3f,90);
-		System.out.println("APC: " + bev.getApc());
 	}
 
 	@Override

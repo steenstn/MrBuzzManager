@@ -38,7 +38,7 @@ public class Beverage {
 	private void calculateApc()
 	{
 		// Get the amount of alcohol in the beverage
-		float amountAlcohol = volume * (strength/100.0f);
+		float amountAlcohol = (volume/100) * (strength/100.0f);
 		
 		// Divide the amount of alcohol with the price to get alcohol per currency
 		// Multiply with 1000 to get per mil

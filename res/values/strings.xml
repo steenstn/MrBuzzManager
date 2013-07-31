@@ -2,7 +2,10 @@
 <resources>
 
     <string name="app_name">MrBuzzManager</string>
-    <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-
+    <string name="editTextBeverageNameHint">Name</string>
+	<string name="editTextBeverageVolumeHint">Volume(cl)</string>
+	<string name="editTextBeverageStrengthHint">Strength(%)</string>
+	<string name="editTextBeveragePriceHint">Price</string>
+	<string name="buttonCalculateAPCText">Calculate APC</string>
 </resources>
