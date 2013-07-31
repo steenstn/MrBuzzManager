@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" 
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/editTextBeverageName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="21dp"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+    <EditText
+        android:id="@+id/editTextBeverageVolume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="21dp"
+        android:ems="10"
+	    android:inputType="numberDecimal" >
+	</EditText>
+	<EditText
+        android:id="@+id/editTextBeverageStrength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="70dp"
+        android:ems="10"
+	    android:inputType="numberDecimal" >
+	</EditText>
+	<EditText
+        android:id="@+id/editTextBeveragePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="70dp"
+        android:ems="10" 
+	    android:inputType="numberDecimal">
+	</EditText>
+	<Button
+	    android:id="@+id/button1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="Button" 
+	    android:onClick="calculateAPC"/>
+	<TextView
+	    android:id="@+id/textViewResult"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:ems="10"
+	    android:text="Result" />
+
+	
+</LinearLayout>
