@@ -78,7 +78,7 @@ public class BuzzAdapter extends BaseAdapter {
 		}
 		
 			holder.getLeftTextView().setText(data.get(position).getBeverage().getName());
-			holder.getCenterTextView().setText(""+data.get(position).getBeverage().getApc());
+			holder.getCenterTextView().setText(""+data.get(position).getBeverage().getApc()*1000);
 			holder.getRightTextView().setText(""+data.get(position).getBeverage().getPrice());
 		
 		

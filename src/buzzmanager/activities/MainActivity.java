@@ -13,6 +13,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -21,12 +24,31 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+	private Spinner barSpinner;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		setUpSpinner();
-		setUpListView();
+		setUpListView(getString(R.string.spinnerTextAllBars));
+		
+		barSpinner = (Spinner)findViewById(R.id.spinnerBar);
+		barSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				String targetBar = (String) barSpinner.getItemAtPosition(position);
+				System.out.println("Target bar: " + targetBar);
+				setUpListView(targetBar);
+				
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 	
 
@@ -58,8 +80,6 @@ public class MainActivity extends Activity {
 		TextView result = (TextView)findViewById(R.id.textViewResult);
 		result.append(beverage.getName() + " - APC: " + beverage.getApc()*1000.0f + "\n");
 	
-		
-		
 	}
 	
 	/**
@@ -89,16 +109,17 @@ public class MainActivity extends Activity {
 		BuzzDataSource ds = new BuzzDataSource(this);
 		List<String> bars = new ArrayList<String>();
 		bars = ds.getBars();
+		bars.add(0, getString(R.string.spinnerTextAllBars)); // Insert "All bars"-string to the spinner
 		Spinner barSpinner = (Spinner)findViewById(R.id.spinnerBar);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, bars);
 		barSpinner.setAdapter(adapter);
 	}
 	
-	private void setUpListView()
+	private void setUpListView(String targetBar)
 	{
 		BuzzDataSource ds = new BuzzDataSource(this);
 		List<Beverage> beverages = new ArrayList<Beverage>();
-		beverages = ds.getBeverages(null);
+		beverages = ds.getBeverages(targetBar);
 		ListView l=(ListView) findViewById(R.id.listViewBeverages);
 		BuzzAdapter adapter=new BuzzAdapter(getApplicationContext());
 		for(int i = 0; i < beverages.size(); i++)

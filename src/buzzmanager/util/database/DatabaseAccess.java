@@ -3,6 +3,7 @@ package buzzmanager.util.database;
 import java.util.ArrayList;
 import java.util.List;
 
+import buzzmanager.activities.R;
 import buzzmanager.util.Beverage;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -52,13 +53,13 @@ public class DatabaseAccess {
 		List<Beverage> beverages = new ArrayList<Beverage>();
 		
 		Cursor cursor;
-		if(targetBar == null)
+		if(targetBar !=null)
 		{
-			cursor = database.query(BuzzDatabase.TABLE_BEVERAGES, allBeverageColumns, null, null, null, null, BuzzDatabase.COLUMN_APC);
+			cursor = database.query(BuzzDatabase.TABLE_BEVERAGES, allBeverageColumns, BuzzDatabase.COLUMN_BAR + " = '" + targetBar + "'", null, null, null, BuzzDatabase.COLUMN_APC);
 		}
 		else
 		{
-			cursor = database.query(BuzzDatabase.TABLE_BEVERAGES, allBeverageColumns, BuzzDatabase.COLUMN_BAR + " = " + targetBar, null, null, null, BuzzDatabase.COLUMN_APC);
+			cursor = database.query(BuzzDatabase.TABLE_BEVERAGES, allBeverageColumns, null, null, null, null, BuzzDatabase.COLUMN_APC);
 		}
 		
 		cursor.moveToFirst();

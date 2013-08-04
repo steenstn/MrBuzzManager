@@ -8,4 +8,5 @@
 	<string name="editTextBeverageStrengthHint">Strength(%)</string>
 	<string name="editTextBeveragePriceHint">Price</string>
 	<string name="buttonCalculateAPCText">Calculate APC</string>
+	<string name="spinnerTextAllBars">All bars</string>
 </resources>
