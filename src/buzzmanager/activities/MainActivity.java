@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import buzzmanager.fragments.AddBarDialogFragment;
+import buzzmanager.fragments.RemoveBarDialogFragment;
 import buzzmanager.util.Beverage;
 import buzzmanager.util.BuzzAdapter;
 import buzzmanager.util.ViewHolder;
@@ -41,7 +42,7 @@ public class MainActivity extends FragmentActivity {
 		
 		
 		TextView result = (TextView)findViewById(R.id.textViewResult);
-		result.setText(getString(R.string.apc) + ":  0,00");
+		result.setText(getString(R.string.apc) + ": 0,00");
 	
 		setUpListeners();
 		
@@ -97,6 +98,13 @@ public class MainActivity extends FragmentActivity {
 		BuzzDataSource ds = new BuzzDataSource(this);
 		return ds.addBar(barName);
 	}
+	
+	public boolean removeBar(String barName)
+	{
+		BuzzDataSource ds = new BuzzDataSource(this);
+		return ds.removeBar(barName);
+	}
+	
 	public void calculateAPC(View view)
 	{
 		EditText nameEditText = (EditText)findViewById(R.id.editTextBeverageName);
@@ -154,7 +162,10 @@ public class MainActivity extends FragmentActivity {
 	        	newFragment = new AddBarDialogFragment();
             	newFragment.show(getSupportFragmentManager(), "addBar");
 	        	return true;
-            
+	        case R.id.menuRemoveBar:
+	        	newFragment = new RemoveBarDialogFragment();
+            	newFragment.show(getSupportFragmentManager(), "addBar");
+	        	return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -195,12 +206,9 @@ public class MainActivity extends FragmentActivity {
 			public void afterTextChanged(Editable s) {}
 
 			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {}
-
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 			@Override
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				calculateAPC(null);
 			}
 			
@@ -228,10 +236,7 @@ public class MainActivity extends FragmentActivity {
 			}
 
 			@Override
-			public void onNothingSelected(AdapterView<?> parent) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void onNothingSelected(AdapterView<?> parent) {}
 		});
 		
 	}

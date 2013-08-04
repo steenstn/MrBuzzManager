@@ -7,6 +7,7 @@ package buzzmanager.util;
  */
 public class Beverage {
 
+	private long id;
 	// The name of the beverage
 	private String name;
 	// The volume of the beverage (in litres)
@@ -46,6 +47,16 @@ public class Beverage {
 		this.bar = bar;
 		calculateApc();
 	}
+	public Beverage(long id, String name, float volume, float strength, float price, String bar)
+	{
+		this.id = id;
+		this.name = name;
+		this.volume = volume;
+		this.strength = strength;
+		this.price = price;
+		this.bar = bar;
+		calculateApc();
+	}
 	
 	private void calculateApc()
 	{
@@ -75,6 +86,10 @@ public class Beverage {
 	public void setBar(String bar)
 	{
 		this.bar = bar;
+	}
+	public long getId()
+	{
+		return id;
 	}
 	public String getName()
 	{

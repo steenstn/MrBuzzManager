@@ -43,6 +43,14 @@ public class BuzzDataSource {
 		return result;
 	}
 	
+	public boolean removeBar(String barName)
+	{
+		open();
+		boolean result = dbAccess.removeBar(barName);
+		close();
+		return result;
+	}
+	
 	public List<String> getBars()
 	{
 		List<String> result;

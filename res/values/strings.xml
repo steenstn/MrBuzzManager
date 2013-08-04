@@ -12,6 +12,7 @@
 	<string name="buttonAddBeverageToBar">Add to bar</string>
 	<string name="barName">Bar name</string>
 	<string name="menuAddBar">Add bar</string>
+	<string name="menuRemoveBar">Remove bar</string>
 	<string name="apc">APC</string>
 	<string name="volumeShort">Vol.</string>
 	<string name="strengthShort">Str.</string>

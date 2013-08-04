@@ -55,6 +55,15 @@ public class DatabaseAccess {
 			return true;
 	}
 	
+	public boolean removeBar(String barName)
+	{
+		int result = database.delete(BuzzDatabase.TABLE_BARS, BuzzDatabase.COLUMN_NAME + " = '" + barName + "'", null);
+		if(result!=0)
+			return true;
+		else
+			return false;
+	}
+	
 	/**
 	 * Gets beverages from the database
 	 * @param bar - Returns beverages that matches a bar, or all if value = null
@@ -77,7 +86,7 @@ public class DatabaseAccess {
 		cursor.moveToFirst();
 		while(!cursor.isAfterLast())
 		{
-			Beverage beverage = new Beverage(cursor.getString(1), cursor.getFloat(2), 
+			Beverage beverage = new Beverage(cursor.getLong(0), cursor.getString(1), cursor.getFloat(2), 
 											 cursor.getFloat(3), cursor.getFloat(4),
 											 cursor.getString(6));
 			
