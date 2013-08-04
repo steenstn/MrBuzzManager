@@ -15,13 +15,14 @@ public class BuzzDatabase extends SQLiteOpenHelper{
 		public static final String COLUMN_VOLUME = "volume";
 		public static final String COLUMN_STRENGTH = "strength";
 		public static final String COLUMN_PRICE = "price";
+		public static final String COLUMN_APC = "apc";
 		public static final String COLUMN_BAR = "bar";
 		
 		private static final String DATABASE_CREATE_TABLE_BEVERAGES = "create table if not exists "
 				+ TABLE_BEVERAGES + "(" + COLUMN_ID
 				+ " integer primary key autoincrement, " + COLUMN_NAME
 				+ " text, " + COLUMN_VOLUME + " double not null, " + COLUMN_STRENGTH + " double not null, "
-				+ COLUMN_PRICE + " double not null, " + COLUMN_BAR + " text);";
+				+ COLUMN_PRICE + " double not null, " + COLUMN_APC + " double, " + COLUMN_BAR + " text);";
 		
 		private static final String DATABASE_NAME = "buzz.db";
 		private static final int DATABASE_VERSION = 1;
@@ -48,6 +49,26 @@ public class BuzzDatabase extends SQLiteOpenHelper{
 			database.insert(BuzzDatabase.TABLE_BARS, null,values);
 			values.put(BuzzDatabase.COLUMN_NAME, "Världens bar");
 			database.insert(BuzzDatabase.TABLE_BARS, null,values);
+
+			values.put(BuzzDatabase.COLUMN_NAME, "Carlsberg");
+			values.put(BuzzDatabase.COLUMN_PRICE, 15.4);
+			values.put(BuzzDatabase.COLUMN_VOLUME, 0.5);
+			values.put(BuzzDatabase.COLUMN_STRENGTH, 0.05);
+			values.put(BuzzDatabase.COLUMN_BAR, "Trappan");
+			values.put(BuzzDatabase.COLUMN_APC, 0.0002);
+
+			database.insert(BuzzDatabase.TABLE_BEVERAGES, null,values);
+			
+
+			values.put(BuzzDatabase.COLUMN_NAME, "Dansk");
+			values.put(BuzzDatabase.COLUMN_PRICE, 10.4);
+			values.put(BuzzDatabase.COLUMN_VOLUME, 0.33);
+			values.put(BuzzDatabase.COLUMN_STRENGTH, 0.06);
+			values.put(BuzzDatabase.COLUMN_BAR, "Systemet");
+			values.put(BuzzDatabase.COLUMN_APC, 0.0001);
+			database.insert(BuzzDatabase.TABLE_BEVERAGES, null,values);
+
+			
 			
 		}
 		

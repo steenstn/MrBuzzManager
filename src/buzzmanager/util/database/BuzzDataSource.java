@@ -2,6 +2,8 @@ package buzzmanager.util.database;
 
 import java.util.List;
 
+import buzzmanager.util.Beverage;
+
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -28,6 +30,20 @@ public class BuzzDataSource {
 		List<String> result;
 		open();
 		result = dbAccess.getBars();
+		close();
+		return result;
+	}
+	
+	/**
+	 * Returns beverages from the database that matches a bar
+	 * @param bar - The bar to check for
+	 * @return - THe beverages for a specific bar
+	 */
+	public List<Beverage> getBeverages(String bar)
+	{
+		List<Beverage> result;
+		open();
+		result = dbAccess.getBeverages(bar);
 		close();
 		return result;
 	}

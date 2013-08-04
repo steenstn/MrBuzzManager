@@ -88,7 +88,8 @@
 	<Spinner
 	    android:id="@+id/spinnerBar"
 	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content" />
+	    android:layout_height="40dip"
+	    android:layout_centerHorizontal="true" />
 	
 	<ListView 
           android:id="@+id/listViewBeverages"

@@ -37,6 +37,16 @@ public class Beverage {
 		calculateApc();
 	}
 	
+	public Beverage(String name, float volume, float strength, float price, String bar)
+	{
+		this.name = name;
+		this.volume = volume;
+		this.strength = strength;
+		this.price = price;
+		this.bar = bar;
+		calculateApc();
+	}
+	
 	private void calculateApc()
 	{
 		float amountAlcohol = volume * strength;

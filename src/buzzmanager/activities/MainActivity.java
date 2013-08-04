@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import buzzmanager.util.Beverage;
+import buzzmanager.util.BuzzAdapter;
+import buzzmanager.util.ViewHolder;
 import buzzmanager.util.database.BuzzDataSource;
 
 import android.os.Bundle;
@@ -24,6 +26,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		setUpSpinner();
+		setUpListView();
 	}
 	
 
@@ -90,13 +93,18 @@ public class MainActivity extends Activity {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, bars);
 		barSpinner.setAdapter(adapter);
 	}
+	
 	private void setUpListView()
 	{
 		BuzzDataSource ds = new BuzzDataSource(this);
-		ArrayList<String> strings = new ArrayList<String>();
-		strings = (ArrayList<String>) ds.getBars();
+		List<Beverage> beverages = new ArrayList<Beverage>();
+		beverages = ds.getBeverages(null);
 		ListView l=(ListView) findViewById(R.id.listViewBeverages);
-		ArrayAdapter<String> adapter=new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, strings);
+		BuzzAdapter adapter=new BuzzAdapter(getApplicationContext());
+		for(int i = 0; i < beverages.size(); i++)
+		{
+			adapter.add(new ViewHolder(beverages.get(i)));
+		}
 		l.setAdapter(adapter);		
 	}
 
