@@ -34,9 +34,21 @@ public class DatabaseAccess {
 		values.put(BuzzDatabase.COLUMN_STRENGTH, beverage.getStrength());
 		values.put(BuzzDatabase.COLUMN_VOLUME, beverage.getVolume());
 		values.put(BuzzDatabase.COLUMN_BAR, beverage.getBar());
+		values.put(BuzzDatabase.COLUMN_APC, beverage.getApc());
 		
 		long insertId = database.insert(BuzzDatabase.TABLE_BEVERAGES, null, values);
 		
+		if(insertId == -1)
+			return false;
+		else
+			return true;
+	}
+	
+	public boolean addBar(String barName)
+	{
+		ContentValues values = new ContentValues();
+		values.put(BuzzDatabase.COLUMN_NAME, barName);
+		long insertId = database.insert(BuzzDatabase.TABLE_BARS, null, values);
 		if(insertId == -1)
 			return false;
 		else

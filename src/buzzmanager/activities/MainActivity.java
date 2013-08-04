@@ -3,6 +3,7 @@ package buzzmanager.activities;
 import java.util.ArrayList;
 import java.util.List;
 
+import buzzmanager.fragments.addBarDialogFragment;
 import buzzmanager.util.Beverage;
 import buzzmanager.util.BuzzAdapter;
 import buzzmanager.util.ViewHolder;
@@ -11,7 +12,11 @@ import buzzmanager.util.database.BuzzDataSource;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -22,7 +27,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
 	private Spinner barSpinner;
 	@Override
@@ -60,6 +65,40 @@ public class MainActivity extends Activity {
 		return true;
 	}
 	
+	public void addBeverageToBar(View view)
+	{
+		EditText nameEditText = (EditText)findViewById(R.id.editTextBeverageName);
+		String name = nameEditText.getText().toString();
+		
+		
+		EditText volumeEditText = (EditText)findViewById(R.id.editTextBeverageVolume);
+		float volume = parseFloatFromEditText(volumeEditText) / 100.0f;
+		
+		EditText strengthEditText = (EditText)findViewById(R.id.editTextBeverageStrength);
+		float strength = parseFloatFromEditText(strengthEditText) / 100.0f;
+		
+		EditText priceEditText = (EditText)findViewById(R.id.editTextBeveragePrice);
+		float price = parseFloatFromEditText(priceEditText);
+		
+		Beverage beverage = new Beverage(name, volume, strength, price);
+		
+
+		String bar = (String)barSpinner.getSelectedItem();
+		if(!bar.equals(getString(R.string.spinnerTextAllBars)))
+		{
+			beverage.setBar(bar);
+		}
+		
+		BuzzDataSource ds = new BuzzDataSource(this);
+		ds.addBeverage(beverage);
+		
+	}
+	
+	public boolean addBar(String barName)
+	{
+		BuzzDataSource ds = new BuzzDataSource(this);
+		return ds.addBar(barName);
+	}
 	public void calculateAPC(View view)
 	{
 		EditText nameEditText = (EditText)findViewById(R.id.editTextBeverageName);
@@ -78,7 +117,7 @@ public class MainActivity extends Activity {
 		Beverage beverage = new Beverage(name, volume, strength, price);
 		
 		TextView result = (TextView)findViewById(R.id.textViewResult);
-		result.append(beverage.getName() + " - APC: " + beverage.getApc()*1000.0f + "\n");
+		result.setText(beverage.getName() + " - APC: " + beverage.getApc()*1000.0f + "\n");
 	
 	}
 	
@@ -104,6 +143,24 @@ public class MainActivity extends Activity {
 		return result;
 	}
 	
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+    	Intent intent;
+    	DialogFragment newFragment;
+        switch (item.getItemId()) {
+	        case R.id.menuAddBar:
+	        	newFragment = new addBarDialogFragment();
+            	newFragment.show(getSupportFragmentManager(), "addBar");
+	        	return true;
+            
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    
 	private void setUpSpinner()
 	{
 		BuzzDataSource ds = new BuzzDataSource(this);

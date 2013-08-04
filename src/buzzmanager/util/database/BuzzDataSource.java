@@ -27,6 +27,22 @@ public class BuzzDataSource {
 		close();
 	}
 	
+	public boolean addBeverage(Beverage beverage)
+	{
+		open();
+		boolean result = dbAccess.addBeverage(beverage);
+		close();
+		return result;
+	}
+	
+	public boolean addBar(String barName)
+	{
+		open();
+		boolean result = dbAccess.addBar(barName);
+		close();
+		return result;
+	}
+	
 	public List<String> getBars()
 	{
 		List<String> result;

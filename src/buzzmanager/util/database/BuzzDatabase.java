@@ -41,35 +41,6 @@ public class BuzzDatabase extends SQLiteOpenHelper{
 		{
 			database.execSQL(DATABASE_CREATE_TABLE_BARS);
 			database.execSQL(DATABASE_CREATE_TABLE_BEVERAGES);
-			
-			ContentValues values = new ContentValues();
-			values.put(BuzzDatabase.COLUMN_NAME, "Trappan");
-			database.insert(BuzzDatabase.TABLE_BARS, null,values);
-			values.put(BuzzDatabase.COLUMN_NAME, "Hugos");
-			database.insert(BuzzDatabase.TABLE_BARS, null,values);
-			values.put(BuzzDatabase.COLUMN_NAME, "Världens bar");
-			database.insert(BuzzDatabase.TABLE_BARS, null,values);
-
-			values.put(BuzzDatabase.COLUMN_NAME, "Carlsberg");
-			values.put(BuzzDatabase.COLUMN_PRICE, 15.4);
-			values.put(BuzzDatabase.COLUMN_VOLUME, 0.5);
-			values.put(BuzzDatabase.COLUMN_STRENGTH, 0.05);
-			values.put(BuzzDatabase.COLUMN_BAR, "Trappan");
-			values.put(BuzzDatabase.COLUMN_APC, 0.0002);
-
-			database.insert(BuzzDatabase.TABLE_BEVERAGES, null,values);
-			
-
-			values.put(BuzzDatabase.COLUMN_NAME, "Dansk");
-			values.put(BuzzDatabase.COLUMN_PRICE, 10.4);
-			values.put(BuzzDatabase.COLUMN_VOLUME, 0.33);
-			values.put(BuzzDatabase.COLUMN_STRENGTH, 0.06);
-			values.put(BuzzDatabase.COLUMN_BAR, "Systemet");
-			values.put(BuzzDatabase.COLUMN_APC, 0.0001);
-			database.insert(BuzzDatabase.TABLE_BEVERAGES, null,values);
-
-			
-			
 		}
 		
 		@Override
