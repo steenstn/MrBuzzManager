@@ -31,6 +31,7 @@ public class MainActivity extends Activity {
 		EditText nameEditText = (EditText)findViewById(R.id.editTextBeverageName);
 		String name = nameEditText.getText().toString();
 		
+		
 		EditText volumeEditText = (EditText)findViewById(R.id.editTextBeverageVolume);
 		float volume = parseFloatFromEditText(volumeEditText);
 		
