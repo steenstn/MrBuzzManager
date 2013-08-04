@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.support.v4.app.DialogFragment;
 
-public class addBarDialogFragment extends DialogFragment {
+public class AddBarDialogFragment extends DialogFragment {
 
 	public Dialog onCreateDialog(Bundle savedInstanceState) 
 	{
@@ -39,14 +39,15 @@ public class addBarDialogFragment extends DialogFragment {
 				}
 				else
 					Toast.makeText(view.getContext(), "Failed to add "+ bar.getText().toString() , Toast.LENGTH_LONG).show();
-				
+				activity.setUpListView(getString(R.string.spinnerTextAllBars));
+				activity.setUpSpinner();
 			}
 		})
         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() 
         {
 		    public void onClick(DialogInterface dialog, int id) 
 		    {
-		        addBarDialogFragment.this.getDialog().cancel();
+		        AddBarDialogFragment.this.getDialog().cancel();
 		    }
         });   
 

@@ -67,11 +67,11 @@ public class DatabaseAccess {
 		Cursor cursor;
 		if(targetBar !=null)
 		{
-			cursor = database.query(BuzzDatabase.TABLE_BEVERAGES, allBeverageColumns, BuzzDatabase.COLUMN_BAR + " = '" + targetBar + "'", null, null, null, BuzzDatabase.COLUMN_APC);
+			cursor = database.query(BuzzDatabase.TABLE_BEVERAGES, allBeverageColumns, BuzzDatabase.COLUMN_BAR + " = '" + targetBar + "'", null, null, null, BuzzDatabase.COLUMN_APC + " desc");
 		}
 		else
 		{
-			cursor = database.query(BuzzDatabase.TABLE_BEVERAGES, allBeverageColumns, null, null, null, null, BuzzDatabase.COLUMN_APC);
+			cursor = database.query(BuzzDatabase.TABLE_BEVERAGES, allBeverageColumns, null, null, null, null, BuzzDatabase.COLUMN_APC + " desc");
 		}
 		
 		cursor.moveToFirst();

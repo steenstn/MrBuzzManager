@@ -3,7 +3,7 @@ package buzzmanager.activities;
 import java.util.ArrayList;
 import java.util.List;
 
-import buzzmanager.fragments.addBarDialogFragment;
+import buzzmanager.fragments.AddBarDialogFragment;
 import buzzmanager.util.Beverage;
 import buzzmanager.util.BuzzAdapter;
 import buzzmanager.util.ViewHolder;
@@ -69,7 +69,8 @@ public class MainActivity extends FragmentActivity {
 	{
 		EditText nameEditText = (EditText)findViewById(R.id.editTextBeverageName);
 		String name = nameEditText.getText().toString();
-		
+		if(name.equals(""))
+			return;
 		
 		EditText volumeEditText = (EditText)findViewById(R.id.editTextBeverageVolume);
 		float volume = parseFloatFromEditText(volumeEditText) / 100.0f;
@@ -82,6 +83,8 @@ public class MainActivity extends FragmentActivity {
 		
 		Beverage beverage = new Beverage(name, volume, strength, price);
 		
+		if(Float.isNaN(beverage.getApc()) || Float.isInfinite(beverage.getApc()))
+			return;
 
 		String bar = (String)barSpinner.getSelectedItem();
 		if(!bar.equals(getString(R.string.spinnerTextAllBars)))
@@ -91,6 +94,10 @@ public class MainActivity extends FragmentActivity {
 		
 		BuzzDataSource ds = new BuzzDataSource(this);
 		ds.addBeverage(beverage);
+		nameEditText.setText("");
+		volumeEditText.setText("");
+		strengthEditText.setText("");
+		priceEditText.setText("");
 		
 	}
 	
@@ -103,7 +110,6 @@ public class MainActivity extends FragmentActivity {
 	{
 		EditText nameEditText = (EditText)findViewById(R.id.editTextBeverageName);
 		String name = nameEditText.getText().toString();
-		
 		
 		EditText volumeEditText = (EditText)findViewById(R.id.editTextBeverageVolume);
 		float volume = parseFloatFromEditText(volumeEditText) / 100.0f;
@@ -146,12 +152,11 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-    	Intent intent;
+        
     	DialogFragment newFragment;
         switch (item.getItemId()) {
 	        case R.id.menuAddBar:
-	        	newFragment = new addBarDialogFragment();
+	        	newFragment = new AddBarDialogFragment();
             	newFragment.show(getSupportFragmentManager(), "addBar");
 	        	return true;
             
@@ -161,7 +166,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     
-	private void setUpSpinner()
+	public void setUpSpinner()
 	{
 		BuzzDataSource ds = new BuzzDataSource(this);
 		List<String> bars = new ArrayList<String>();
@@ -172,7 +177,7 @@ public class MainActivity extends FragmentActivity {
 		barSpinner.setAdapter(adapter);
 	}
 	
-	private void setUpListView(String targetBar)
+	public void setUpListView(String targetBar)
 	{
 		BuzzDataSource ds = new BuzzDataSource(this);
 		List<Beverage> beverages = new ArrayList<Beverage>();
