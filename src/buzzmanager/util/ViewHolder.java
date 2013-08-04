@@ -10,9 +10,12 @@ import android.widget.TextView;
  */
 public class ViewHolder {
 	
-    private TextView leftTextView;
-    private TextView centerTextView;
-    private TextView rightTextView;
+    private TextView nameTextView;
+    private TextView apcTextView;
+    private TextView volumeTextView;
+    private TextView strengthTextView;
+    private TextView priceTextView;
+    
     private Beverage beverage;
     
 	public ViewHolder(Beverage beverage)
@@ -30,31 +33,48 @@ public class ViewHolder {
     	return beverage;
     }
     
-    public TextView getLeftTextView()
+    public TextView getNameTextView()
     {
-    	return leftTextView;
+    	return nameTextView;
     }
     
-    public TextView getCenterTextView()
+    public TextView getApcTextView()
     {
-    	return centerTextView;
+    	return apcTextView;
     }
     
-    public TextView getRightTextView()
+    public TextView getVolumeTextView()
     {
-    	return rightTextView;
+    	return volumeTextView;
     }
-    public void setLeftTextView(TextView textView)
+    
+    public TextView getStrengthTextView()
     {
-    	this.leftTextView = textView;
+    	return strengthTextView;
     }
-    public void setCenterTextView(TextView textView)
+    public TextView getPriceTextView()
     {
-    	this.centerTextView = textView;
+    	return priceTextView;
     }
-    public void setRightTextView(TextView textView)
+    public void setNameTextView(TextView textView)
     {
-    	this.rightTextView = textView;
+    	this.nameTextView = textView;
+    }
+    public void setApcTextView(TextView textView)
+    {
+    	this.apcTextView = textView;
+    }
+    public void setVolumeTextView(TextView textView)
+    {
+    	this.volumeTextView = textView;
+    }
+    public void setStrengthTextView(TextView textView)
+    {
+    	this.strengthTextView = textView;
+    }
+    public void setPriceTextView(TextView textView)
+    {
+    	this.priceTextView = textView;
     }
     
     public void setBeverage(Beverage beverage)

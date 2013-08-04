@@ -3,7 +3,7 @@
 
     <string name="app_name">MrBuzzManager</string>
     <string name="menu_settings">Settings</string>
-    <string name="editTextBeverageNameHint">Name</string>
+    <string name="editTextBeverageNameHint">Beverage</string>
 	<string name="editTextBeverageVolumeHint">Volume(cl)</string>
 	<string name="editTextBeverageStrengthHint">Strength(%)</string>
 	<string name="editTextBeveragePriceHint">Price</string>
@@ -13,4 +13,7 @@
 	<string name="barName">Bar name</string>
 	<string name="menuAddBar">Add bar</string>
 	<string name="apc">APC</string>
+	<string name="volumeShort">Vol.</string>
+	<string name="strengthShort">Str.</string>
+	
 </resources>

@@ -63,9 +63,12 @@ public class BuzzAdapter extends BaseAdapter {
 		{
 			convertView = inflater.inflate(R.layout.beverage_listitem,null);
 			holder = new ViewHolder(data.get(position));
-			holder.setLeftTextView((TextView)convertView.findViewById(R.id.listLeftTextView));
-			holder.setCenterTextView((TextView)convertView.findViewById(R.id.listCenterTextView));
-			holder.setRightTextView((TextView)convertView.findViewById(R.id.listRightTextView));
+			holder.setNameTextView((TextView)convertView.findViewById(R.id.listNameTextView));
+			holder.setApcTextView((TextView)convertView.findViewById(R.id.listApcTextView));
+			holder.setVolumeTextView((TextView)convertView.findViewById(R.id.listVolumeTextView));
+			
+			holder.setStrengthTextView((TextView)convertView.findViewById(R.id.listStrengthTextView));
+			holder.setPriceTextView((TextView)convertView.findViewById(R.id.listPriceTextView));
 			
 			convertView.setTag(holder);
 		}
@@ -78,9 +81,12 @@ public class BuzzAdapter extends BaseAdapter {
 		}
 		
 		Beverage beverage = data.get(position).getBeverage();
-		holder.getLeftTextView().setText(beverage.getName() + ": " +String.format("%.2f", beverage.getApc()*1000));
-		holder.getCenterTextView().setText(""+beverage.getStrength()*100 + "%");
-		holder.getRightTextView().setText(""+data.get(position).getBeverage().getPrice());
+		holder.getNameTextView().setText(beverage.getName());
+		holder.getApcTextView().setText(String.format("%.2f", beverage.getApc()*1000.0f));
+		holder.getVolumeTextView().setText(""+beverage.getVolume()*100.0f);
+		
+		holder.getStrengthTextView().setText(""+beverage.getStrength()*100.0f + "%");
+		holder.getPriceTextView().setText(""+data.get(position).getBeverage().getPrice());
 		
 		
 		
