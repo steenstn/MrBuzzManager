@@ -41,7 +41,7 @@ public class MainActivity extends FragmentActivity {
 		
 		
 		TextView result = (TextView)findViewById(R.id.textViewResult);
-			result.setText(getString(R.string.apc) + ":  0,00");
+		result.setText(getString(R.string.apc) + ":  0,00");
 	
 		setUpListeners();
 		

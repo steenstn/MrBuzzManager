@@ -4,34 +4,55 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" 
     android:orientation="vertical">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".MainActivity" 
-    android:orientation="horizontal">
-    
+
     <EditText
         android:id="@+id/editTextBeverageName"
         android:layout_width="168dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dip"
         android:layout_marginTop="10dip"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:ems="10"
+        android:inputType="textCapSentences"
         android:hint="@string/editTextBeverageNameHint" >
 
     </EditText>
     
-    <EditText
-        android:id="@+id/editTextBeverageVolume"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dip"
-        android:layout_marginTop="10dip"
-        android:ems="10"
-	    android:inputType="numberDecimal" 
-	    android:hint="@string/editTextBeverageVolumeHint">
-	</EditText>
+    
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity" 
+    android:orientation="horizontal"
+    android:paddingTop="20dip">
+    
+       	<TextView
+       	    android:id="@+id/textViewVolume"
+       	    android:layout_width="80dip"
+       	    android:layout_height="wrap_content"
+       	    android:ems="10"       	    
+		    android:gravity="center"
+       	    android:layout_weight="3"
+       	    android:text="@string/editTextBeverageVolumeHint" />
+
+       	<TextView
+		    android:id="@+id/textViewStrength"
+		    android:layout_width="80dip"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:gravity="center"
+		    android:layout_weight="3"
+		    android:text="@string/editTextBeverageStrengthHint" />
+       	<TextView
+		    android:id="@+id/textViewPrice"
+		    android:layout_width="80dip"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:layout_weight="3"
+		    android:gravity="center"
+		    android:text="@string/editTextBeveragePriceHint" />
+       	
     </LinearLayout>
     
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -40,26 +61,32 @@
     android:layout_height="wrap_content"
     tools:context=".MainActivity" 
     android:orientation="horizontal">
-    
 	    <EditText
-	        android:id="@+id/editTextBeverageStrength"
-	        android:layout_width="147dp"
+	        android:id="@+id/editTextBeverageVolume"
+	        android:layout_width="80dip"
 	        android:layout_height="wrap_content"
 	        android:layout_marginRight="10dip"
-	        android:layout_marginTop="10dip"
+	        android:layout_weight="3"
 	        android:ems="10"
-	        android:hint="@string/editTextBeverageStrengthHint"
+		    android:inputType="numberDecimal" >
+		</EditText>
+	    <EditText
+	        android:id="@+id/editTextBeverageStrength"
+	        android:layout_width="80dip"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="3"
+	        android:gravity="center"
+	        android:ems="10"
 	        android:inputType="numberDecimal" />
 	
 		<EditText
 	        android:id="@+id/editTextBeveragePrice"
-	        android:layout_width="wrap_content"
+	        android:layout_width="80dip"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="10dip"
-        	android:layout_marginTop="10dip"
+	        android:layout_weight="3"
 	        android:ems="10" 
-		    android:inputType="numberDecimal"
-		    android:hint="@string/editTextBeveragePriceHint">
+		    android:inputType="numberDecimal">
 		</EditText>
 	</LinearLayout>
 
