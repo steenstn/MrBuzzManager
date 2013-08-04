@@ -17,12 +17,14 @@ public class Beverage {
 	private float price;
 	// Alcohol Per Currency, the amount of alcohol you get per currency (in Per mil)
 	private float apc;
+	// The bar which this beverage belongs to
+	private String bar;
 	
 	/**
 	 * Creates a new beverage
 	 * @param name - Name of the beverage
-	 * @param volume - The volume of the beverage (in centilitres)
-	 * @param strength - The alcohol strength of the beverage (in percent)
+	 * @param volume - The volume of the beverage
+	 * @param strength - The alcohol strength of the beverage
 	 * @param price - The price of the beverage
 	 */
 	public Beverage(String name, float volume, float strength, float price)
@@ -31,19 +33,14 @@ public class Beverage {
 		this.volume = volume;
 		this.strength = strength;
 		this.price = price;
-		
+		this.bar = "";
 		calculateApc();
 	}
 	
 	private void calculateApc()
 	{
-		// Get the amount of alcohol in the beverage
-		float amountAlcohol = (volume/100) * (strength/100.0f);
-		
-		// Divide the amount of alcohol with the price to get alcohol per currency
-		// Multiply with 1000 to get per mil
-		apc = (amountAlcohol / price) * 1000.0f;
-		
+		float amountAlcohol = volume * strength;
+		apc = (amountAlcohol / price);
 	}
 	
 	public void setName(String name)
@@ -64,6 +61,10 @@ public class Beverage {
 	public void setPrice(float price)
 	{
 		this.price = price;
+	}
+	public void setBar(String bar)
+	{
+		this.bar = bar;
 	}
 	public String getName()
 	{
@@ -88,5 +89,10 @@ public class Beverage {
 	public float getApc()
 	{
 		return apc;
+	}
+	
+	public String getBar()
+	{
+		return bar;
 	}
 }
