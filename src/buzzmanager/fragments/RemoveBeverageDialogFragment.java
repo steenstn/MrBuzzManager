@@ -28,7 +28,7 @@ public class RemoveBeverageDialogFragment extends DialogFragment {
 		targetId = getArguments().getLong("id");
 		builder.setView(view);
  
-		builder.setPositiveButton("Remove", new DialogInterface.OnClickListener() 
+		builder.setPositiveButton(activity.getString(R.string.remove), new DialogInterface.OnClickListener() 
 		{   
 			@Override
 			public void onClick(DialogInterface dialog, int id) 
@@ -36,7 +36,7 @@ public class RemoveBeverageDialogFragment extends DialogFragment {
 				activity.removeBeverage(targetId);
 			}
 		})
-        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() 
+        .setNegativeButton(activity.getString(R.string.cancel), new DialogInterface.OnClickListener() 
         {
 		    public void onClick(DialogInterface dialog, int id) 
 		    {

@@ -27,23 +27,18 @@ public class RemoveBarDialogFragment extends DialogFragment {
     
 		builder.setView(view);
  
-		builder.setPositiveButton("Remove", new DialogInterface.OnClickListener() 
+		builder.setPositiveButton(activity.getString(R.string.remove), new DialogInterface.OnClickListener() 
 		{   
 			@Override
 			public void onClick(DialogInterface dialog, int id) 
 			{
 				EditText bar = (EditText)view.findViewById(R.id.dialogBarName);
-				if(activity.removeBar(bar.getText().toString())==true)
-				{
-				    Toast.makeText(view.getContext(), "Successfully removed "+ bar.getText().toString() , Toast.LENGTH_LONG).show();
-				}
-				else
-					Toast.makeText(view.getContext(), "Failed to remove "+ bar.getText().toString() , Toast.LENGTH_LONG).show();
+				activity.removeBar(bar.getText().toString());
 				activity.setUpListView(getString(R.string.spinnerTextAllBars));
 				activity.setUpSpinner();
 			}
 		})
-        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() 
+        .setNegativeButton(activity.getString(R.string.cancel), new DialogInterface.OnClickListener() 
         {
 		    public void onClick(DialogInterface dialog, int id) 
 		    {

@@ -92,6 +92,8 @@ public class MainActivity extends FragmentActivity {
 		volumeEditText.setText("");
 		strengthEditText.setText("");
 		priceEditText.setText("");
+		String targetBar = (String) barSpinner.getSelectedItem();
+		setUpListView(targetBar);
 		
 	}
 	
@@ -104,13 +106,19 @@ public class MainActivity extends FragmentActivity {
 	public boolean removeBar(String barName)
 	{
 		BuzzDataSource ds = new BuzzDataSource(this);
-		return ds.removeBar(barName);
+		boolean result = ds.removeBar(barName);
+		String targetBar = (String) barSpinner.getSelectedItem();
+		setUpListView(targetBar);
+		return result;
 	}
 	
 	public boolean removeBeverage(long id)
 	{
 		BuzzDataSource ds = new BuzzDataSource(this);
-		return ds.removeBeverage(id);
+		boolean result = ds.removeBeverage(id);
+		String targetBar = (String) barSpinner.getSelectedItem();
+		setUpListView(targetBar);
+		return result;
 	}
 	
 	public void calculateAPC(View view)

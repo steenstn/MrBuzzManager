@@ -27,7 +27,7 @@ public class AddBarDialogFragment extends DialogFragment {
     
 		builder.setView(view);
  
-		builder.setPositiveButton("Add", new DialogInterface.OnClickListener() 
+		builder.setPositiveButton(activity.getString(R.string.add), new DialogInterface.OnClickListener() 
 		{   
 			@Override
 			public void onClick(DialogInterface dialog, int id) 
@@ -35,15 +35,15 @@ public class AddBarDialogFragment extends DialogFragment {
 				EditText bar = (EditText)view.findViewById(R.id.dialogBarName);
 				if(activity.addBar(bar.getText().toString())==true)
 				{
-				    Toast.makeText(view.getContext(), "Successfully added "+ bar.getText().toString() , Toast.LENGTH_LONG).show();
+				    Toast.makeText(view.getContext(), activity.getString(R.string.successfullyAdded)+ " " + bar.getText().toString() , Toast.LENGTH_LONG).show();
 				}
 				else
-					Toast.makeText(view.getContext(), "Failed to add "+ bar.getText().toString() , Toast.LENGTH_LONG).show();
+					Toast.makeText(view.getContext(), activity.getString(R.string.failedToAdd)+ " " + bar.getText().toString() , Toast.LENGTH_LONG).show();
 				activity.setUpListView(getString(R.string.spinnerTextAllBars));
 				activity.setUpSpinner();
 			}
 		})
-        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() 
+        .setNegativeButton(activity.getString(R.string.cancel), new DialogInterface.OnClickListener() 
         {
 		    public void onClick(DialogInterface dialog, int id) 
 		    {
