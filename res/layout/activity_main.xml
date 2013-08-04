@@ -63,39 +63,36 @@
 		</EditText>
 	</LinearLayout>
 
-	<RelativeLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content" >
-	    <Button
-	        android:id="@+id/buttonAddBeverageToBar"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:onClick="addBeverageToBar"
-	        android:text="@string/buttonAddBeverageToBar" />
-
-	    <Button
-	        android:id="@+id/buttonCalculateAPC"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignParentTop="true"
-	        android:layout_toRightOf="@+id/buttonAddBeverageToBar"
-	        android:onClick="calculateAPC"
-	        android:text="@string/buttonCalculateAPCText" />
-	    
-	</RelativeLayout>
-
+	
 	<TextView
 	    android:id="@+id/textViewResult"
-	    android:layout_width="match_parent"
+	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:ems="10"
-	    android:text="Result\n" />
-
+	    android:paddingTop="20dip"
+	    android:textAppearance="?android:attr/textAppearanceLarge"
+	    android:text="@string/apc" />
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:paddingTop="40dip"
+	    android:orientation="horizontal" >
+	
 	<Spinner
 	    android:id="@+id/spinnerBar"
 	    android:layout_width="wrap_content"
 	    android:layout_height="40dip"
 	    android:layout_centerHorizontal="true" />
+	
+	<Button
+	        android:id="@+id/buttonAddBeverageToBar"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:onClick="addBeverageToBar"
+	        android:layout_marginLeft="20dip"
+	        android:text="@string/buttonAddBeverageToBar" />
+	
+	</LinearLayout> 
 	
 	<ListView 
           android:id="@+id/listViewBeverages"

@@ -15,6 +15,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,23 +39,12 @@ public class MainActivity extends FragmentActivity {
 		setUpSpinner();
 		setUpListView(getString(R.string.spinnerTextAllBars));
 		
-		barSpinner = (Spinner)findViewById(R.id.spinnerBar);
-		barSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-			@Override
-			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-				String targetBar = (String) barSpinner.getItemAtPosition(position);
-				System.out.println("Target bar: " + targetBar);
-				setUpListView(targetBar);
-				
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> parent) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		
+		TextView result = (TextView)findViewById(R.id.textViewResult);
+			result.setText(getString(R.string.apc) + ":  0,00");
+	
+		setUpListeners();
+		
 	}
 	
 
@@ -123,7 +114,11 @@ public class MainActivity extends FragmentActivity {
 		Beverage beverage = new Beverage(name, volume, strength, price);
 		
 		TextView result = (TextView)findViewById(R.id.textViewResult);
-		result.setText(beverage.getName() + " - APC: " + beverage.getApc()*1000.0f + "\n");
+		
+		float theApc = beverage.getApc()*1000.0f;
+		
+		if(!(Float.isInfinite(theApc) || Float.isNaN(theApc)))
+			result.setText(getString(R.string.apc) + ": " + String.format("%.2f", theApc));
 	
 	}
 	
@@ -191,4 +186,53 @@ public class MainActivity extends FragmentActivity {
 		l.setAdapter(adapter);		
 	}
 
+	private void setUpListeners()
+	{
+		// A watcher that is added to all edit texts
+		TextWatcher editTextWatcher = new TextWatcher(){
+
+			@Override
+			public void afterTextChanged(Editable s) {}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				calculateAPC(null);
+			}
+			
+		};
+
+		EditText nameEditText = (EditText)findViewById(R.id.editTextBeverageName);
+		nameEditText.addTextChangedListener(editTextWatcher);
+		
+		EditText volumeEditText = (EditText)findViewById(R.id.editTextBeverageVolume);
+		volumeEditText.addTextChangedListener(editTextWatcher);
+		
+		EditText strengthEditText = (EditText)findViewById(R.id.editTextBeverageStrength);
+		strengthEditText.addTextChangedListener(editTextWatcher);
+		
+		EditText priceEditText = (EditText)findViewById(R.id.editTextBeveragePrice);
+		priceEditText.addTextChangedListener(editTextWatcher);
+		
+		barSpinner = (Spinner)findViewById(R.id.spinnerBar);
+		barSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				String targetBar = (String) barSpinner.getItemAtPosition(position);
+				setUpListView(targetBar);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+	}
 }
