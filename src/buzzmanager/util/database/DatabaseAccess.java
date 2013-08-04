@@ -44,6 +44,17 @@ public class DatabaseAccess {
 			return true;
 	}
 	
+	public boolean removeBeverage(long id)
+	{
+		
+		int result = database.delete(BuzzDatabase.TABLE_BEVERAGES, BuzzDatabase.COLUMN_ID + " = " + id, null);
+		
+		if(result!=0)
+			return true;
+		else
+			return false;
+	}
+	
 	public boolean addBar(String barName)
 	{
 		ContentValues values = new ContentValues();

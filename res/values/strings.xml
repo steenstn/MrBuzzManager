@@ -16,5 +16,6 @@
 	<string name="apc">APC</string>
 	<string name="volumeShort">Vol.</string>
 	<string name="strengthShort">Str.</string>
+	<string name="removeBeverage">Remove beverage?</string>
 	
 </resources>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import buzzmanager.fragments.AddBarDialogFragment;
 import buzzmanager.fragments.RemoveBarDialogFragment;
+import buzzmanager.fragments.RemoveBeverageDialogFragment;
 import buzzmanager.util.Beverage;
 import buzzmanager.util.BuzzAdapter;
 import buzzmanager.util.ViewHolder;
@@ -23,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -105,6 +107,12 @@ public class MainActivity extends FragmentActivity {
 		return ds.removeBar(barName);
 	}
 	
+	public boolean removeBeverage(long id)
+	{
+		BuzzDataSource ds = new BuzzDataSource(this);
+		return ds.removeBeverage(id);
+	}
+	
 	public void calculateAPC(View view)
 	{
 		EditText nameEditText = (EditText)findViewById(R.id.editTextBeverageName);
@@ -164,7 +172,7 @@ public class MainActivity extends FragmentActivity {
 	        	return true;
 	        case R.id.menuRemoveBar:
 	        	newFragment = new RemoveBarDialogFragment();
-            	newFragment.show(getSupportFragmentManager(), "addBar");
+            	newFragment.show(getSupportFragmentManager(), "removeBar");
 	        	return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -239,5 +247,22 @@ public class MainActivity extends FragmentActivity {
 			public void onNothingSelected(AdapterView<?> parent) {}
 		});
 		
+		ListView beverageList = (ListView) findViewById(R.id.listViewBeverages);
+		beverageList.setOnItemLongClickListener(new OnItemLongClickListener(){
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				ViewHolder viewHolder = (ViewHolder)((ListView)parent).getItemAtPosition(position);
+				Beverage beverage = viewHolder.getBeverage();
+				Bundle bundle = new Bundle();
+				
+				bundle.putLong("id", beverage.getId());
+				RemoveBeverageDialogFragment frag = new RemoveBeverageDialogFragment();
+				frag.setArguments(bundle);
+
+				frag.show(getSupportFragmentManager(), "removeBeverage");
+				return true;
+			}});
 	}
 }

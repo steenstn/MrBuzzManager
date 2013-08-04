@@ -35,6 +35,14 @@ public class BuzzDataSource {
 		return result;
 	}
 	
+	public boolean removeBeverage(long id)
+	{
+		open();
+		boolean result = dbAccess.removeBeverage(id);
+		close();
+		return result;
+	}
+	
 	public boolean addBar(String barName)
 	{
 		open();
