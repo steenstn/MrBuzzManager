@@ -68,7 +68,7 @@ public class DatabaseAccess {
 	
 	public boolean removeBar(String barName)
 	{
-		int result = database.delete(BuzzDatabase.TABLE_BARS, BuzzDatabase.COLUMN_NAME + " = '" + barName + "'", null);
+		int result = database.delete(BuzzDatabase.TABLE_BARS, BuzzDatabase.COLUMN_NAME + " = \"" + barName + "\"", null);
 		if(result!=0)
 			return true;
 		else
@@ -83,11 +83,10 @@ public class DatabaseAccess {
 	public List<Beverage> getBeverages(String targetBar)
 	{
 		List<Beverage> beverages = new ArrayList<Beverage>();
-		
 		Cursor cursor;
 		if(targetBar !=null)
 		{
-			cursor = database.query(BuzzDatabase.TABLE_BEVERAGES, allBeverageColumns, BuzzDatabase.COLUMN_BAR + " = '" + targetBar + "'", null, null, null, BuzzDatabase.COLUMN_APC + " desc");
+			cursor = database.query(BuzzDatabase.TABLE_BEVERAGES, allBeverageColumns, BuzzDatabase.COLUMN_BAR + " = \"" + targetBar + "\"", null, null, null, BuzzDatabase.COLUMN_APC + " desc");
 		}
 		else
 		{
