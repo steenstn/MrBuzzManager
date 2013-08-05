@@ -33,7 +33,7 @@ public class AddBarDialogFragment extends DialogFragment {
 			public void onClick(DialogInterface dialog, int id) 
 			{
 				EditText bar = (EditText)view.findViewById(R.id.dialogBarName);
-				if(activity.addBar(bar.getText().toString())==true)
+				if(!bar.getText().toString().equals("") && activity.addBar(bar.getText().toString())==true)
 				{
 				    Toast.makeText(view.getContext(), activity.getString(R.string.successfullyAdded)+ " " + bar.getText().toString() , Toast.LENGTH_LONG).show();
 				}

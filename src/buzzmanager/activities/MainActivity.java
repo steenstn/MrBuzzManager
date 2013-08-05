@@ -31,6 +31,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity {
 
@@ -64,8 +65,10 @@ public class MainActivity extends FragmentActivity {
 		EditText nameEditText = (EditText)findViewById(R.id.editTextBeverageName);
 		String name = nameEditText.getText().toString();
 		if(name.equals(""))
+		{
+			Toast.makeText(this, getString(R.string.toastEnterInfo), Toast.LENGTH_LONG).show();
 			return;
-		
+		}
 		EditText volumeEditText = (EditText)findViewById(R.id.editTextBeverageVolume);
 		float volume = parseFloatFromEditText(volumeEditText) / 100.0f;
 		
@@ -78,8 +81,10 @@ public class MainActivity extends FragmentActivity {
 		Beverage beverage = new Beverage(name, volume, strength, price);
 		
 		if(Float.isNaN(beverage.getApc()) || Float.isInfinite(beverage.getApc()))
+		{
+			Toast.makeText(this, getString(R.string.toastEnterInfo), Toast.LENGTH_LONG).show();
 			return;
-
+		}
 		String bar = (String)barSpinner.getSelectedItem();
 		if(!bar.equals(getString(R.string.spinnerTextAllBars)))
 		{

@@ -9,7 +9,8 @@
 	<string name="editTextBeveragePriceHint">Pris</string>
 	<string name="buttonCalculateAPCText">Beräkna APK</string>
 	<string name="spinnerTextAllBars">Alla barer</string>
-	<string name="buttonAddBeverageToBar">Lägg till i bar</string>
+	<string name="buttonAddBeverageToBar">Lägg till dryck i bar</string>
+	<string name="toastEnterInfo">Skriv in all information om drycken</string>
 	<string name="barName">Barnamn</string>
 	<string name="menuAddBar">Lägg till bar</string>
 	<string name="menuRemoveBar">Ta bort bar</string>

@@ -9,7 +9,8 @@
 	<string name="editTextBeveragePriceHint">Price</string>
 	<string name="buttonCalculateAPCText">Calculate APC</string>
 	<string name="spinnerTextAllBars">All bars</string>
-	<string name="buttonAddBeverageToBar">Add to bar</string>
+	<string name="buttonAddBeverageToBar">Add beverage to bar</string>
+	<string name="toastEnterInfo">Enter all information for the beverage</string>
 	<string name="barName">Bar name</string>
 	<string name="menuAddBar">Add bar</string>
 	<string name="menuRemoveBar">Remove bar</string>
