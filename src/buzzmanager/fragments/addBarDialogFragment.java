@@ -35,10 +35,10 @@ public class AddBarDialogFragment extends DialogFragment {
 				EditText bar = (EditText)view.findViewById(R.id.dialogBarName);
 				if(!bar.getText().toString().equals("") && activity.addBar(bar.getText().toString())==true)
 				{
-				    Toast.makeText(view.getContext(), activity.getString(R.string.successfullyAdded)+ " " + bar.getText().toString() , Toast.LENGTH_LONG).show();
+				    Toast.makeText(view.getContext(), activity.getString(R.string.successfullyAdded), Toast.LENGTH_LONG).show();
 				}
 				else
-					Toast.makeText(view.getContext(), activity.getString(R.string.failedToAdd)+ " " + bar.getText().toString() , Toast.LENGTH_LONG).show();
+					Toast.makeText(view.getContext(), activity.getString(R.string.failedToAdd), Toast.LENGTH_LONG).show();
 				activity.setUpListView(getString(R.string.spinnerTextAllBars));
 				activity.setUpSpinner();
 			}

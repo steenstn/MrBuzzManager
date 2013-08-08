@@ -18,8 +18,8 @@
 	<string name="volumeShort">Vol.</string>
 	<string name="strengthShort">Str.</string>
 	<string name="removeBeverage">Remove beverage?</string>
-	<string name="successfullyAdded">Successfully added</string>
-	<string name="failedToAdd">Failed to add</string>
+	<string name="successfullyAdded">Successfully added bar</string>
+	<string name="failedToAdd">Failed to add bar</string>
 	<string name="add">Add</string>
 	<string name="remove">Remove</string>
 	<string name="cancel">Cancel</string>

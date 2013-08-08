@@ -28,6 +28,9 @@ public class DatabaseAccess {
 	
 	public boolean addBeverage(Beverage beverage)
 	{
+		String fixedBeverage = beverage.getName().replaceAll("['\"]", "");
+		beverage.setName(fixedBeverage);
+		
 		ContentValues values = new ContentValues();
 		values.put(BuzzDatabase.COLUMN_NAME, beverage.getName());
 		values.put(BuzzDatabase.COLUMN_PRICE, beverage.getPrice());
@@ -58,7 +61,10 @@ public class DatabaseAccess {
 	public boolean addBar(String barName)
 	{
 		ContentValues values = new ContentValues();
-		values.put(BuzzDatabase.COLUMN_NAME, barName);
+		String fixedBarName = barName.replaceAll("['\"]", "");
+		
+		
+		values.put(BuzzDatabase.COLUMN_NAME, fixedBarName);
 		long insertId = database.insert(BuzzDatabase.TABLE_BARS, null, values);
 		if(insertId == -1)
 			return false;
@@ -68,7 +74,9 @@ public class DatabaseAccess {
 	
 	public boolean removeBar(String barName)
 	{
-		int result = database.delete(BuzzDatabase.TABLE_BARS, BuzzDatabase.COLUMN_NAME + " = \"" + barName + "\"", null);
+		String fixedBarName = barName.replaceAll("['\"]", "");
+		
+		int result = database.delete(BuzzDatabase.TABLE_BARS, BuzzDatabase.COLUMN_NAME + " = '" + fixedBarName + "'", null);
 		if(result!=0)
 			return true;
 		else

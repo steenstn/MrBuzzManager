@@ -18,8 +18,8 @@
 	<string name="volumeShort">Vol.</string>
 	<string name="strengthShort">Str.</string>
 	<string name="removeBeverage">Ta bort dryck?</string>
-	<string name="successfullyAdded">Lade till</string>
-	<string name="failedToAdd">Kunde ej lägga till</string>
+	<string name="successfullyAdded">Lade till bar</string>
+	<string name="failedToAdd">Kunde ej lägga till bar</string>
 	<string name="add">Lägg till</string>
 	<string name="remove">Ta bort</string>
 	<string name="cancel">Avbryt</string>
