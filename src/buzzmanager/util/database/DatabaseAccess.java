@@ -1,5 +1,6 @@
 package buzzmanager.util.database;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,8 +62,8 @@ public class DatabaseAccess {
 	public boolean addBar(String barName)
 	{
 		ContentValues values = new ContentValues();
-		String fixedBarName = barName.replaceAll("['\"]", "");
 		
+		String fixedBarName = barName.replaceAll("['\"]", "\'");
 		
 		values.put(BuzzDatabase.COLUMN_NAME, fixedBarName);
 		long insertId = database.insert(BuzzDatabase.TABLE_BARS, null, values);
