@@ -75,9 +75,9 @@ public class DatabaseAccess {
 	
 	public boolean removeBar(String barName)
 	{
-		String fixedBarName = barName.replaceAll("['\"]", "");
+		String fixedBarName = barName.replaceAll("['\"]", "\'");
 		
-		int result = database.delete(BuzzDatabase.TABLE_BARS, BuzzDatabase.COLUMN_NAME + " = '" + fixedBarName + "'", null);
+		int result = database.delete(BuzzDatabase.TABLE_BARS, BuzzDatabase.COLUMN_NAME + " = \"" + fixedBarName + "\"", null);
 		if(result!=0)
 			return true;
 		else
